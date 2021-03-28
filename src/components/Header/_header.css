@@ -1,0 +1,41 @@
+.header-elements{
+    display: flex;
+    justify-content: space-between;
+    color: var(--blue-secondary);
+    font-weight: bold;
+    align-items: center;
+    margin-top: 10px;
+    background-color: var(--grey-bg);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 5px 20px 15px 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+.info-elements {
+    border-right: #e7e7e7 solid 4px;
+    height: 65px;
+    padding-right: 35px;
+    padding-bottom: 20px;
+}
+
+.info-elements p {
+    margin-block-start: 0.2em;
+}
+
+.logo-img {
+    margin-top: -5px;
+}
+
+.account-elements {
+    border-left: #e7e7e7 solid 4px;
+    height: 65px;
+    padding-left: 35px;
+    padding-bottom: 20px;
+}
+
+.account-elements p {
+    margin-block-start: 0.2em;
+}
