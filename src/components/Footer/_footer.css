@@ -1,0 +1,73 @@
+h3 {
+    margin: 0;
+}
+
+.footer {
+    background-color: var(--blue-primary);
+    margin-top: 100px;
+    padding: 0px 0px 40px 0px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-elements {
+    display: block;
+    max-width: 960px;
+    margin: 0 auto;
+    color: white;
+    list-style: none;
+    padding: 0px 0px 10px 0px;
+    align-items: center;
+}
+
+.footer-contato {
+    background-color: var(--blue-secondary);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    line-height: 1.8em;
+    font-size: 1.3em;
+}
+
+.footer-contato .footer-contato-elements {
+    margin-left: 30px;
+}
+
+.footer-help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.footer-help .footer-chat{
+    text-align: center;
+    background-color: var(--blue-secondary);
+    margin-right: 5px;
+    padding: 38px 8px 38px 8px;
+    width: 33%;
+}
+
+.footer-help .footer-email{
+    width: 33%;
+    text-align: center;
+    background-color: var(--blue-secondary);
+    margin-right: 5px;
+    padding: 35px 8px 35px 8px;
+}
+
+.footer-help .footer-ajuda{
+    width: 33%;
+    text-align: center;
+    background-color: var(--blue-secondary);
+    padding: 35px 8px 35px 8px;
+}
+
+.footer p {
+    margin-top: 40px;
+    color: white;
+    font-weight: 900;
+    font-size: 1.4em;
+}
