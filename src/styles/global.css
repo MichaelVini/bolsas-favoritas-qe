@@ -1,0 +1,27 @@
+/*Varibles*/
+:root {
+    --blue-primary: #18ACC4;
+    --blue-secondary: #007A8D;
+    --yellow-primary: #FDCB13;
+    --yellow-secondary: #DE9E1F;
+    --green: #0FA866;
+    --black-text: #1F2D30;
+    --grey-bg: #FBFBFB;
+    --ovarlay-modal: #1F2D30;
+}
+
+/* reset css*/
+body, h1, h2, ul, li {
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
