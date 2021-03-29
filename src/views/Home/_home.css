@@ -1,10 +1,15 @@
 .home {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 0px 20px 0px 20px;
-    margin-top: 30px;
     color: var(--black-text);
     justify-content: center;
     align-items: center;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.my-account {
+    margin-bottom: 20px;
 }
 
 .my-account a {
@@ -13,7 +18,7 @@
     text-decoration: none;
     color: var(--blue-secondary);
     font-weight: 900;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 .my-account img {
@@ -22,11 +27,11 @@
 }
 
 .home-elements h1 {
-    font-size: 3em;
+    font-size: 2.2em;
 }
 
 .home-elements p {
-    font-size: 1.75em;
+    font-size: 1.3em;
     line-height: 1.45em;
     color: #444d4f;
     margin-top: 25px;
@@ -40,7 +45,7 @@
     width: 480px;
     color: var(--blue-secondary);
     font-weight: 900;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .semester-list ul {
@@ -74,8 +79,7 @@
 }
 
 .add-courses:hover {
-    background-color: #eaeaea;
-    transition: 0.2;
+    background-color:rgba(0, 0, 0, .15);
     cursor: pointer;
 }
 
@@ -95,7 +99,105 @@
 }
 
 .add-courses p {
-    font-size: 1.2em;
+    font-size: 1.1em;
     max-width: 260px;
-    margin: -10px auto;
+    margin: 8px auto;
+}
+
+@media (max-width: 700px) {
+    .semester-list {
+        max-width: 80vw;
+    }
+
+    .add-courses {
+        max-width: 80vw;
+    }
+}
+
+/* MODAL */
+
+.modal::before {
+    content: "";
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .8);
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 200px 0px 0px 0px;
+  }
+  
+.modal-container {
+    position: relative;
+    background: white;
+    z-index: 1;
+    display: grid;
+    align-items: end;
+    grid-gap: 50px;
+    padding: 50px 50px 50px 0;
+}
+  
+.modal-dados {
+    grid-column: 2;
+    max-width: 600px;
+}
+
+.close-modal {
+    position: absolute;
+    border: none;
+    color: white;
+    font-size: 1.3em;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: bold;
+    top: -30px;
+    right: -4px;
+    cursor: pointer;
+}
+
+.modal-dados p {
+    margin: 5px;
+}
+
+.modal-dados span {
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+/* .modal-dados input {
+    margin-top: 15px;
+} */
+
+.select-city {
+    display: grid;
+}
+
+.select-scholarship {
+    display: grid;
+}
+
+.select-modality {
+    display: grid;
+}
+
+.select-modality .modality {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.select-modality .presencial-modality {
+    margin-right: 25px;
+}
+
+.select-max-payment {
 }
