@@ -23,5 +23,5 @@ export default {
 </script>
 
 <style>
-  @import './styles/variables.css';
+  @import './styles/global.css';
 </style>
