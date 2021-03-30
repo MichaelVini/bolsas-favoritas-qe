@@ -3,13 +3,24 @@
         <section class="header">
             <div class="header-elements">
                 <div class="info-elements">
-                    <img src="@/assets/icon-info.svg" alt="Icone de info">
-                    <p>Ajuda</p>
+                    <a href="">
+                        <img src="@/assets/icon-info.svg" width="35px" alt="Icone de info">
+                        <p>Ajuda</p>
+                    </a>
                 </div>
-                <img  class="logo-img" src="./../../assets/logo-querobolsa.svg" width= '180px' alt="Logo do Quero Bolsa">
+                <div class="contato-elements">
+                    <img src="@/assets/whatsapp.svg" width="50px" alt="">
+                    <a href="">
+                        <h3>0800 123 222</h3>
+                        <p>Envie mensagem ou ligue</p>
+                    </a>
+                </div>
+                <img  class="logo-img" src="./../../assets/logo-querobolsa.svg" width= '140px' alt="Logo do Quero Bolsa">
                 <div class="account-elements">
-                    <img src="@/assets/user-circle-regular.svg" style="#007A8D" alt="">
-                    <p>Conta</p>
+                    <a href="">
+                        <img src="@/assets/user-circle-regular.svg" style="#007A8D" width="35px" alt="">
+                        <p>Conta</p>
+                    </a>
                 </div>
             </div>
         </section>

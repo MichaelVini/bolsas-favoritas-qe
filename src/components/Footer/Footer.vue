@@ -1,7 +1,8 @@
 <template>
     <section class="footer">
         <div class="footer-elements">
-            <div class="footer-contato">
+            <div class="footer-list">
+                 <div class="footer-contato">
                 <img src="@/assets/whatsapp-white.svg" width="50px" alt="">
                 <div class="footer-contato-elements">
                     <h3>0800 123 2222</h3>
@@ -23,6 +24,7 @@
                 </div>
             </div>
         </div>
+            </div>
         <p> Feito com &hearts; pela <b>Quero Educação</b></p>
     </section>
 </template>

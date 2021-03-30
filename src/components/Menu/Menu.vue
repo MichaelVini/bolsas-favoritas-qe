@@ -2,7 +2,7 @@
     <div>
         <section class="menu">
             <div class="menu-elements">
-                <p>Minha conta</p>
+                <a href=""><p>Minha conta</p></a>
                 <a href="">
                     <p>Menu</p>
                     <img src="@/assets/chevron-down-solid.svg" alt="">
