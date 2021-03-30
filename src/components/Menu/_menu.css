@@ -4,7 +4,7 @@
 }
 
 .menu-elements {
-    max-width: 960px;
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -13,12 +13,10 @@
     padding: 0px 20px 0px 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
 
 .menu-elements a {
-    text-decoration: none;
-    color: inherit;
     display: flex;
 }
 
