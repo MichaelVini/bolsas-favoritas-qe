@@ -24,6 +24,16 @@
                         <h2>Adicionar bolsa</h2>
                         <p>Clique para adicionar bolsas de cursos do seu interesse</p>
                 </div>
+                <!-- <div v-for="scholarship in scholarships" :key="scholarship.discount_percentage" class="courses-list">
+                    <img :src="item.university.logo_url" alt="">
+                    <h3>{{ scholarship.university.name }}</h3>
+                    <h4>{{ scholarship.course.name }}</h4>
+                    <p>{{ scholarship.university.score }}</p>
+                    <p>Mensalidade com o quero bolsa:</p>
+                    <h4>R$ {{ scholarship.price_with_discount }}</h4>
+                    <button>Excluir</button>
+                    <button>Ver oferta</button>
+                </div> -->
             </div>
             <section class="modal" v-if="showModal == true">
                 <div class="modal-container">
@@ -33,41 +43,63 @@
                             <p>Filtre e adicione as bolsas de seu interesse.</p>
                             <div class="select-city">
                                 <span>SELECIONE SUA CIDADE</span>
-                                <select name="city" id="city">
-                                    <option value="sjc">São José dos Campos</option>
-                                    <option value="sp">São Paulo</option>
-                                    <option value="guaru">Guarulhos</option>
-                                    <option value="jacarei">Jacareí</option>
+                                <select name="city" v-model="citySelected" id="city">
+                                    <option value selected disabled>Selecione uma cidade</option>
+                                    <option 
+                                        v-for="city in scholarshipsCities"
+                                        :key="city"  
+                                        >{{ city }}</option>
                                 </select>
                             </div>
                            <div class="select-scholarship">
                                <span>SELECIONE O CURSO DE SUA PREFERÊNCIA</span>
-                                <select name="cc" id="cc">Ciência da Computação</select>
+                                <select name="cc" v-model="scholarshipSelected" id="cc">
+                                    <option value selected disabled>Selecione um curso</option>
+                                    <option 
+                                    v-for="name in scholarshipsNames" 
+                                    :key="name" 
+                                    >{{ name }}</option>
+                                </select>
                            </div>
                            <div class="select-modality">
                                <span>COMO VOCÊ QUER ESTUDAR?</span>
                                <div class="modality">
                                     <div class="presencial-modality">
-                                        <input type="checkbox" name="presencial">
+                                        <input type="checkbox" class="presencial" value="presencial" v-model="modality" > 
                                         <label for="presencial">Presencial</label>
                                     </div>
                                     <div class="ead-modality">
-                                        <input type="checkbox" value="ead">
+                                        <input type="checkbox" value="A distancia" v-model="modality">
                                         <label for="ead">A distância</label>
                                     </div>
                                </div>
                            </div>
                            <div class="select-max-payment">
                                <span>ATÉ QUANTO PODE PAGAR?</span>
+                               <div class="slideContainer">
+                                   <p>R$ {{ rangeValue }}</p>
+                                   <input type="range" min="1" max="10000" value="5000" id="myRange" class="slider" v-model="rangeValue">      
+                               </div>
                            </div>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                            <button>Cancelar</button>
-                            <button>Adicionar Bolsas</button>
+                           <div class="filter">
+                                <span>Resultado</span>
+                                <span>Ordenar por</span>
+                                <p>{{ scholarshipSelected }}</p>
+                                <p>{{ citySelected }}</p>
+                                <p>{{ modality }}</p>
+                           </div>
+                           <div v-for="scholarship in scholarships"  :key="scholarship"  class="scholarships-list">
+                               <input type="checkbox">
+                               <img :src="scholarship.university.logo_url" alt="" width="100px">
+                               <div class="scholarships-content">
+                                    <h3>{{ scholarship.course.name }}</h3>
+                                    <span>{{ scholarship.course.level}}</span>
+                                    <h4><p> Bolsa de </p> {{ scholarship.discount_percentage}}% </h4>
+                                    <h4>R$ {{ scholarship.price_with_discount }}/mês</h4>
+                               </div>
+                           </div>
+                           <button>Cancelar</button>
+                           <button>Adicionar Bolsas</button>
                     </div>
                 </div>
             </section>
@@ -77,17 +109,56 @@
 </template>
 
 <script>
+import dataScholarships from '@/services/db.json'
 
 export default {
     data() {
         return{
-            showModal: Boolean
+            showModal: Boolean,
+            rangeValue: "5000",
+            scholarships: [],
+            scholarshipsCities: [],
+            scholarshipsNames: [],
+            citySelected: "",
+            scholarshipSelected: "",
+            modality: []
         }
     },
     methods: {
         changeModal(){
             this.showModal = !this.showModal
+        },
+        filterCities(){
+            let array = dataScholarships;
+            let arrayCities = array.map( res => {
+                return res.campus.city
+            })
+            let arrayCitiesWithoutRepeat = arrayCities.filter((elem, index) => {
+                return arrayCities.indexOf(elem) === index;
+            })
+            // indexOf retorna a primeira posição em que o item do array aparece
+            this.scholarshipsCities = arrayCitiesWithoutRepeat;
+        },
+
+        filterScholarshipsNames(){
+            let array = dataScholarships;
+            let arrayScholarshipNames = array.map(response => {
+                return response.course.name
+            })
+            let scholarshipsNameWithoutRepeat = arrayScholarshipNames.filter((elem, index) => {
+                return arrayScholarshipNames.indexOf(elem) === index;
+            })
+            this.scholarshipsNames = scholarshipsNameWithoutRepeat;
+        },
+
+        generalFilter(){
+
         }
+    },
+    created() {
+        this.scholarships = dataScholarships
+        this.filterCities();
+        this.filterScholarshipsNames();
     }
 }
 </script>
