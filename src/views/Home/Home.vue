@@ -24,16 +24,6 @@
                         <h2>Adicionar bolsa</h2>
                         <p>Clique para adicionar bolsas de cursos do seu interesse</p>
                 </div>
-                <!-- <div v-for="scholarship in scholarships" :key="scholarship.discount_percentage" class="courses-list">
-                    <img :src="item.university.logo_url" alt="">
-                    <h3>{{ scholarship.university.name }}</h3>
-                    <h4>{{ scholarship.course.name }}</h4>
-                    <p>{{ scholarship.university.score }}</p>
-                    <p>Mensalidade com o quero bolsa:</p>
-                    <h4>R$ {{ scholarship.price_with_discount }}</h4>
-                    <button>Excluir</button>
-                    <button>Ver oferta</button>
-                </div> -->
             </div>
             <section class="modal" v-if="showModal == true">
                 <div class="modal-container">
@@ -44,7 +34,7 @@
                             <div class="select-city">
                                 <span>SELECIONE SUA CIDADE</span>
                                 <select name="city" v-model="citySelected" id="city">
-                                    <option value selected disabled>Selecione uma cidade</option>
+                                    <option value="" selected>Selecione uma cidade</option>
                                     <option 
                                         v-for="city in scholarshipsCities"
                                         :key="city"  
@@ -54,7 +44,7 @@
                            <div class="select-scholarship">
                                <span>SELECIONE O CURSO DE SUA PREFERÊNCIA</span>
                                 <select name="cc" v-model="scholarshipSelected" id="cc">
-                                    <option value selected disabled>Selecione um curso</option>
+                                    <option value="" selected>Selecione um curso</option>
                                     <option 
                                     v-for="name in scholarshipsNames" 
                                     :key="name" 
@@ -65,11 +55,11 @@
                                <span>COMO VOCÊ QUER ESTUDAR?</span>
                                <div class="modality">
                                     <div class="presencial-modality">
-                                        <input type="checkbox" class="presencial" value="presencial" v-model="modality" > 
+                                        <input type="checkbox" class="presencial" value="Presencial" v-model="modality" > 
                                         <label for="presencial">Presencial</label>
                                     </div>
                                     <div class="ead-modality">
-                                        <input type="checkbox" value="A distancia" v-model="modality">
+                                        <input type="checkbox" value="EaD" v-model="modality">
                                         <label for="ead">A distância</label>
                                     </div>
                                </div>
@@ -84,11 +74,13 @@
                            <div class="filter">
                                 <span>Resultado</span>
                                 <span>Ordenar por</span>
-                                <p>{{ scholarshipSelected }}</p>
+                                <!-- <p>{{ scholarshipSelected }}</p>
                                 <p>{{ citySelected }}</p>
                                 <p>{{ modality }}</p>
+                                <p>{{ scholarshipsFilters }}</p> -->
+
                            </div>
-                           <div v-for="scholarship in scholarships"  :key="scholarship"  class="scholarships-list">
+                           <div v-for="scholarship in scholarshipsFilters"  :key="scholarship"  class="scholarships-list">
                                <input type="checkbox">
                                <img :src="scholarship.university.logo_url" alt="" width="100px">
                                <div class="scholarships-content">
@@ -124,15 +116,42 @@ export default {
             modality: []
         }
     },
+    computed:{
+        scholarshipsFilters(){
+            const filterByCourseName = this.scholarships.filter((elem) => {
+               return elem.course.name === this.scholarshipSelected && elem.price_with_discount <= this.rangeValue 
+            })
+
+             const filterByCityName = this.scholarships.filter((elem) => {
+                 return elem.campus.city === this.citySelected && elem.price_with_discount <= this.rangeValue 
+             })
+            
+            const filterAll = this.scholarships.filter((elem) => {
+                const resul = elem.course.name === this.scholarshipSelected
+                 &&  elem.campus.city === this.citySelected && elem.price_with_discount <= this.rangeValue 
+                return resul
+            }) 
+
+            if(this.citySelected && this.scholarshipSelected == "") {
+                return filterByCityName
+            } else if(this.scholarshipSelected && this.citySelected == ""){
+                return filterByCourseName
+            } else {
+                return filterAll
+            }
+        }    
+    },
     methods: {
         changeModal(){
             this.showModal = !this.showModal
         },
         filterCities(){
             let array = dataScholarships;
-            let arrayCities = array.map( res => {
-                return res.campus.city
+
+            let arrayCities = array.map( response => {
+                return response.campus.city
             })
+
             let arrayCitiesWithoutRepeat = arrayCities.filter((elem, index) => {
                 return arrayCities.indexOf(elem) === index;
             })
@@ -142,6 +161,7 @@ export default {
 
         filterScholarshipsNames(){
             let array = dataScholarships;
+
             let arrayScholarshipNames = array.map(response => {
                 return response.course.name
             })
@@ -149,14 +169,10 @@ export default {
                 return arrayScholarshipNames.indexOf(elem) === index;
             })
             this.scholarshipsNames = scholarshipsNameWithoutRepeat;
-        },
-
-        generalFilter(){
-
         }
     },
     created() {
-        this.scholarships = dataScholarships
+        this.scholarships = dataScholarships;
         this.filterCities();
         this.filterScholarshipsNames();
     }

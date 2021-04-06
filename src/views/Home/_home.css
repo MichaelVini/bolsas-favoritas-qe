@@ -166,7 +166,6 @@
 .modal-container {
     position: relative;
     background: white;
-    z-index: 1;
     display: grid;
     align-items: end;
     grid-gap: 50px;
@@ -271,7 +270,7 @@
 }
 
 .scholarships-list input {
-    margin-right: 20px;
+    margin: 0 20px;
 }
 
 .scholarships-list .scholarships-content {
@@ -292,7 +291,7 @@
     color: rgb(2, 83, 2);
     font-weight: 900;
     font-size: 1.15em;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .scholarships-list .scholarships-content h4:nth-last-child(2){
