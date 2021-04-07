@@ -1,8 +1,8 @@
 <template>
     <section class="modal">
+        <button class="btn-close-modal" @click="changeModal">X</button>
         <div class="modal-container">
             <div class="modal-dados">
-                <button class="close-modal" @click="changeModal">X</button>
                     <h2>Adicionar bolsa</h2>
                     <p>Filtre e adicione as bolsas de seu interesse.</p>
                     <div class="select-city">

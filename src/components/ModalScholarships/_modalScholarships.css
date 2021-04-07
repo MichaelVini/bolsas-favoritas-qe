@@ -16,7 +16,7 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    padding: 85px 0px 0px 0px;
+    padding: 88px 0px 0px 0px;
   }
   
 .modal-container {
@@ -48,15 +48,16 @@
     max-width: 600px;
 }
 
-.close-modal {
-    position: absolute;
+.btn-close-modal {
+    position: relative;
     border: none;
     font-size: 1.3em;
     background-color: rgba(0, 0, 0, 0);
     font-weight: bold;
-    top: 5px;
-    right: 5px;
+    top: 0px;
+    right: -221px;
     cursor: pointer;
+    color: white;
 }
 
 .modal-dados p {
