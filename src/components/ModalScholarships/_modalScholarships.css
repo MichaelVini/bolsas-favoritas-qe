@@ -55,7 +55,7 @@
     background-color: rgba(0, 0, 0, 0);
     font-weight: bold;
     top: 0px;
-    right: -221px;
+    right: -280px;
     cursor: pointer;
     color: white;
 }
@@ -165,4 +165,53 @@
     color: black;
     font-weight: 200;
     margin-right: 5px;
+}
+
+.scholarships-list input {
+    cursor: pointer;
+}
+
+.add-favorite-courses {
+    display: flex;
+    margin: 25px 0px;
+}
+
+.add-favorite-courses .btn-cancel {
+    border: solid 2px var(--blue-primary);
+    background-color: inherit;
+    color: var(--blue-secondary);
+    padding: 20px 36px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight:900;
+    margin-right: 100px;
+    transition: 0.3s;
+}
+
+.add-favorite-courses .btn-cancel:hover{
+    background-color: var(--blue-primary);
+    color: white;
+    cursor: pointer;
+}
+
+.add-favorite-courses .btn-add-courses {
+    border: solid 2px rgb(226, 174, 4);
+    background-color: rgb(238, 203, 3);
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 20px 28px;
+    transition: 0.3s;
+}
+
+.add-favorite-courses .btn-add-courses:hover {
+    cursor: pointer;
+    background-color: rgb(219, 187, 6);
+}
+
+.add-favorite-courses .btn-add-courses:disabled {
+    color: grey;
+    border-color: rgb(185, 185, 185);
+    background-color: rgb(224, 224, 224);
+    cursor:unset;
 }

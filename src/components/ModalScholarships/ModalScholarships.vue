@@ -49,8 +49,8 @@
                         <span>Resultado</span>
                         <span>Ordenar por</span>
                     </div>
-                    <div v-for="scholarship in scholarshipsFilters"  :key="scholarship"  class="scholarships-list">
-                        <input type="checkbox">
+                    <div v-for="(scholarship, id) in scholarshipsFilters"  :key="id"  class="scholarships-list">
+                        <input type="checkbox" :value="`${id}`" v-model="checkedScholarships">
                         <img :src="scholarship.university.logo_url" alt="" width="100px">
                         <div class="scholarships-content">
                             <h3>{{ scholarship.course.name }}</h3>
@@ -59,8 +59,10 @@
                             <h4>R$ {{ scholarship.price_with_discount }}/mês</h4>
                         </div>
                     </div>
-                    <button>Cancelar</button>
-                    <button>Adicionar Bolsas</button>
+                    <div class="add-favorite-courses">
+                        <button class="btn-cancel">Cancelar</button>
+                        <button class="btn-add-courses" @click="filterFavoriteScholarships">Adicionar bolsa(s)</button>
+                    </div>
             </div>
         </div>
     </section>
@@ -68,34 +70,35 @@
 
 
 <script>
-import dataScholarships from '@/services/db.json'
 
 export default {
     data() {
         return{
             rangeValue: "5000",
-            scholarships: [],
             scholarshipsCities: [],
             scholarshipsNames: [],
             citySelected: "",
             scholarshipSelected: "",
-            modality: []
+            modality: [],
+            checkedScholarships: [],
+            favoriteScholarships:[]
         }
     },
-    props: [
-        "changeModal"
-    ],
+    props: {
+        changeModal: { type: Function },
+        dataScholarships: { type: Array }
+    },
     computed:{
         scholarshipsFilters(){
-            const filterByCourseName = this.scholarships.filter((elem) => {
+            const filterByCourseName = this.dataScholarships.filter((elem) => {
                return elem.course.name === this.scholarshipSelected && elem.price_with_discount <= this.rangeValue 
             })
 
-             const filterByCityName = this.scholarships.filter((elem) => {
+             const filterByCityName = this.dataScholarships.filter((elem) => {
                  return elem.campus.city === this.citySelected && elem.price_with_discount <= this.rangeValue 
              })
             
-            const filterAll = this.scholarships.filter((elem) => {
+            const filterAll = this.dataScholarships.filter((elem) => {
                 const resul = elem.course.name === this.scholarshipSelected
                  &&  elem.campus.city === this.citySelected && elem.price_with_discount <= this.rangeValue 
                 return resul
@@ -108,12 +111,12 @@ export default {
             } else {
                 return filterAll
             }
-        }    
+        }
     },
     methods: {
         filterCities(){
-            let array = dataScholarships;
-
+            let array = this.dataScholarships;
+            
             let arrayCities = array.map( response => {
                 return response.campus.city
             })
@@ -126,7 +129,7 @@ export default {
         },
 
         filterScholarshipsNames(){
-            let array = dataScholarships;
+            let array = this.dataScholarships;
 
             let arrayScholarshipNames = array.map(response => {
                 return response.course.name
@@ -135,14 +138,36 @@ export default {
                 return arrayScholarshipNames.indexOf(elem) === index;
             })
             this.scholarshipsNames = scholarshipsNameWithoutRepeat;
+        },
+        filterFavoriteScholarships(){
+            let array = this.scholarshipsFilters;
+            let arrayScholarshipChecked = this.checkedScholarships;
+
+            let favoriteScholarshipsArray = arrayScholarshipChecked.map((response) => {
+                let resul;
+                array.forEach((elem, index) => {
+                    if(index === parseInt(response)){
+                        resul = elem;
+                    }
+                })
+                return resul;
+            })
+            
+            this.favoriteScholarships = favoriteScholarshipsArray
+            this.sendEventFavoriteScholarships();
+            this.changeModal();
+        },
+        sendEventFavoriteScholarships(){
+            let parsedObj = JSON.parse(JSON.stringify(this.favoriteScholarships))
+            this.$emit("dataFavoriteScholarships", parsedObj)
         }
 
     },
     created() {
-        this.scholarships = dataScholarships;
         this.filterCities();
         this.filterScholarshipsNames();
     }
+
 }
 </script>
 

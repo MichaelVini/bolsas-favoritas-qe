@@ -57,12 +57,17 @@
     list-style: none;
     text-align: center;
     border: var(--blue-secondary) 2px solid;
+    transition: 0.4s;
 }
 
 .semester-list ul li:hover{
     background-color: var(--blue-secondary);
     color: white;
     cursor: pointer;
+}
+.semester-list ul li.selected {
+    background-color: var(--blue-secondary);
+    color: white;
 }
 
 .semester-list ul li:nth-child(1) {
@@ -90,7 +95,8 @@
     margin: 0 auto;
     padding: 25px 0px 25px 0px;
     border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: 0.4s;
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
 }
 
 .add-courses img {
@@ -102,6 +108,102 @@
     font-size: 1.1em;
     max-width: 260px;
     margin: 8px auto;
+}
+
+.favorite-scholarships-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto;
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+    max-width: 480px;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.favorite-scholarships-list input {
+    margin: 0 20px;
+}
+
+.favorite-scholarships-list .scholarships-content {
+    padding: 15px 0px;
+    width: 320px;
+    margin: 0 auto;
+
+}
+
+.favirite-scholarships-list .scholarships-content h3 {
+   margin: 0;
+   font-size: 1em;
+   padding: 10px;
+   color: var(--blue-secondary);
+   font-weight: bold;
+}
+.favorite-scholarships-list .scholarships-content h4 {
+    display: flex;
+    font-weight: 900;
+    font-size: 1.15em;
+    color: var(--blue-secondary);
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.favorite-scholarships-list .scholarships-content h4:nth-last-child(2){
+    margin-top: 25px;
+}
+
+.favorite-scholarships-list .scholarships-content span {
+    font-weight: 500;
+}
+
+.favorite-scholarships-list .scholarships-content p {
+    margin: 0;
+    color: black;
+    font-weight: 200;
+    margin-right: 5px;
+}
+
+.favorite-scholarships-list input {
+    cursor: pointer;
+}
+
+.buttons-favorite-scholarships-list {
+    display: flex;
+    margin-top: 30px;
+}
+
+.btn-delete {
+    border: solid 2px var(--blue-primary);
+    background-color: inherit;
+    color: var(--blue-secondary);
+    border-radius: 4px;
+    font-weight:900;
+    margin-right: 20px;
+    transition: 0.4s;
+    padding: 12px 32px;
+    font-size: 0.95em;
+}
+
+.btn-delete:hover {
+    background-color: var(--blue-primary);
+    color: white;
+    cursor: pointer;
+}
+
+.btn-show-offers {
+    border: solid 2px rgb(226, 174, 4);
+    background-color: rgb(243, 207, 2);
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 18px;
+    width: 200px;
+    font-size: 0.95em;
+}
+
+.btn-show-offers:hover {
+    cursor: pointer;
+    background-color: rgb(219, 187, 6);
 }
 
 @media (max-width: 700px) {
@@ -140,5 +242,4 @@
     cursor: pointer;
 }
 
-/* MODAL */
 
