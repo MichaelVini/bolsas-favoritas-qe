@@ -1,0 +1,365 @@
+.home {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0px 20px 0px 20px;
+    color: var(--black-text);
+    justify-content: center;
+    align-items: center;
+    max-width: 80vw;
+    margin: 30px auto;
+}
+
+.my-account {
+    margin-bottom: 20px;
+}
+
+.my-account a {
+    display: flex;
+    color: inherit;
+    text-decoration: none;
+    color: var(--blue-secondary);
+    font-weight: 900;
+    font-size: 1.1em;
+}
+
+.my-account img {
+    width: 0.7em;
+    margin-right: 15px;
+}
+
+.home-elements h1 {
+    font-size: 2.2em;
+}
+
+.home-elements p {
+    font-size: 1.3em;
+    line-height: 1.45em;
+    color: #444d4f;
+    margin-top: 25px;
+}
+
+
+.semester-list {
+    margin: 60px auto;
+    border-radius: 8px;
+    height: 210px;
+    width: 480px;
+    color: var(--blue-secondary);
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+.semester-list ul {
+    padding-inline-start: 0px;
+}
+
+.semester-list ul li {
+    padding: 20px;
+    list-style: none;
+    text-align: center;
+    border: var(--blue-secondary) 2px solid;
+    transition: 0.4s;
+}
+
+.semester-list ul li:hover{
+    background-color: var(--blue-secondary);
+    color: white;
+    cursor: pointer;
+}
+.semester-list ul li.selected {
+    background-color: var(--blue-secondary);
+    color: white;
+}
+
+.semester-list ul li:nth-child(1) {
+    border-radius: 8px 8px 0px 0px;
+}
+
+.semester-list ul li:nth-child(3) {
+    border-radius: 0px 0px 8px 8px;
+}
+
+.semester-list ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.add-courses:hover {
+    background-color:rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+.add-courses {
+    text-align: center;
+    height: 250px;
+    width: 480px;
+    margin: 0 auto;
+    padding: 25px 0px 25px 0px;
+    border-radius: 5px;
+    transition: 0.4s;
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+}
+
+.add-courses img {
+    width: 70px;
+    margin-top: 25px;
+}
+
+.add-courses p {
+    font-size: 1.1em;
+    max-width: 260px;
+    margin: 8px auto;
+}
+
+.favorite-scholarships-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto;
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+    max-width: 480px;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.favorite-scholarships-list input {
+    margin: 0 20px;
+}
+
+.favorite-scholarships-list .scholarships-content {
+    padding: 15px 0px;
+    width: 320px;
+    margin: 0 auto;
+
+}
+
+.favorite-scholarships-list .scholarships-content h3 {
+   margin: 0;
+   font-size: 1em;
+   padding: 10px;
+   color: var(--blue-secondary);
+   font-weight: bold;
+}
+.favorite-scholarships-list .scholarships-content h4 {
+    display: flex;
+    font-weight: 900;
+    font-size: 1.15em;
+    margin-top: 15px;
+    margin-bottom: 0;
+    justify-content: center;
+}
+
+.favorite-scholarships-list .scholarships-content h4:nth-last-child(2){
+    margin-top: 25px;
+}
+
+.favorite-scholarships-list .scholarships-content span {
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.favorite-scholarships-list .scholarships-content p {
+    margin: 0;
+    color: black;
+    font-weight: 200;
+    margin-right: 5px;
+    font-size: 1em;
+}
+
+.favorite-scholarships-list input {
+    cursor: pointer;
+}
+
+.favorite-scholarships-list .logo-university {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-rating img {
+    margin: 2px 8px 5px 0px;
+}
+
+.buttons-favorite-scholarships-list {
+    display: flex;
+    margin-top: 30px;
+}
+
+.btn-delete {
+    border: solid 2px var(--blue-primary);
+    background-color: inherit;
+    color: var(--blue-secondary);
+    border-radius: 4px;
+    font-weight:900;
+    margin-right: 20px;
+    transition: 0.4s;
+    padding: 12px 32px;
+    font-size: 0.95em;
+}
+
+.btn-delete:hover {
+    background-color: var(--blue-primary);
+    color: white;
+    cursor: pointer;
+}
+
+.btn-show-offers {
+    border: solid 2px rgb(226, 174, 4);
+    background-color: rgb(243, 207, 2);
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 18px;
+    width: 200px;
+    font-size: 0.95em;
+}
+
+.btn-show-offers:hover {
+    cursor: pointer;
+    background-color: rgb(219, 187, 6);
+}
+
+.courses-list {
+    text-align: center;
+    height: 250px;
+    width: 480px;
+    margin: 0 auto;
+    padding: 25px 0px 25px 0px;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.courses-list img {
+    width: 200px;
+    margin-top: 25px;
+}
+
+.courses-list p {
+    font-size: 1.1em;
+    max-width: 260px;
+    margin: 8px auto;
+}
+
+.courses-list:hover {
+    background-color:rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .semester-list {
+        max-width: 80vw;
+    }
+
+    .add-courses {
+        max-width: 80vw;
+    }
+}
+
+@media (min-width: 1125px) {
+    
+    .favorite-scholarships-list .scholarships-content h4 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+    
+    .favorite-scholarships-list .scholarships-content h3{
+        color: rgb(2, 83, 2);
+    }
+
+    .favorite-scholarships-list .scholarships-content h3:nth-child(3){
+        color: var(--blue-secondary);
+    }
+
+    .semester-list {
+        margin: 50px 0px -80px 0px;
+        width: 80vw;
+    }
+
+    .semester-list ul li:nth-child(1) {
+        border-radius: 6px 0px 0px 6px;
+    }
+    
+    .semester-list ul li:nth-child(3) {
+        border-radius: 0px 6px 6px 0px;
+    }
+
+    .semester-list ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .semester-list ul li {
+        padding: 6px 26px;
+        font-size: 0.9em;
+    }
+
+    .add-courses {
+        height: 350px;
+        width: 320px;
+        padding: 110px 0px 0px 0px;
+        margin: 0 30px 30px 0;
+    }
+
+    .scholarships-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .favorite-scholarships-list {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .add-courses img {
+        margin-bottom: 25px;
+    }
+
+    .favorite-scholarships-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 25px auto;
+        max-width: 480px;
+        padding:0;
+        text-align: center;
+        margin: 0 30px 30px 0;
+    }
+
+    .favorite-scholarships-list .scholarships-content h3 {
+        font-size: 0.9em;
+     }
+
+     .favorite-scholarships-list .scholarships-content h4 {
+         font-size: 0.9em;
+         margin-top: 10px;
+     }
+     
+     .favorite-scholarships-list .scholarships-content p {
+        font-size: 0.9em;
+    }
+    
+    .btn-delete {
+        padding: 0;
+        width: 90px;
+        font-size: 0.9em;
+        margin: 0 25px 0 40px;
+    }
+    
+    .btn-show-offers {
+        width: 135px;
+        font-size: 0.9em;
+        padding: 5px 0;
+    }
+
+    .buttons-favorite-scholarships-list {
+        display: flex;
+        margin-top: 10px;
+    }
+}
