@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="add-favorite-courses">
-                        <button class="btn-cancel">Cancelar</button>
+                        <button class="btn-cancel" @click="changeModal">Cancelar</button>
                         <button class="btn-add-courses" @click="filterFavoriteScholarships">Adicionar bolsa(s)</button>
                     </div>
             </div>
@@ -171,4 +171,4 @@ export default {
 }
 </script>
 
-<style src="./_modalScholarships.css" scoped>
+<style src="./modalScholarships.css" scoped>
