@@ -99,7 +99,7 @@ export default {
         changeModal(){
             this.showModal = !this.showModal
         },
-        changeSemester(id){);
+        changeSemester(id){
             if(id == 1){
                 this.allSemesters = true;
                 this.segundoSem2019 = false;
