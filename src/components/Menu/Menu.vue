@@ -18,6 +18,6 @@ export default {
 }
 </script>
 
-<style  src="./_menu.css" scoped>
+<style  src="./menu.css" scoped>
 
 
