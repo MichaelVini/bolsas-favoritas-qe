@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/bolsas-favoritas-qe'
+    publicPath: '/bolsas-favoritas-qe/'
 }
