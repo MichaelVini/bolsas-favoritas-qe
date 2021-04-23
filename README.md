@@ -22,3 +22,5 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+Demo: https://michaelvini.github.io/bolsas-favoritas-qe/
