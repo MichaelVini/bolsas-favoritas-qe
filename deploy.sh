@@ -1,4 +1,4 @@
-!/usr/bin/env sh
+#!/usr/bin/env sh
 
 # abort on errors
 set -e
@@ -17,6 +17,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:michaelvini/<bolsas-favoritas-qe.git master:gh-pages
+git push -f https://github.com/MichaelVini/bolsas-favoritas-qe.git master:gh-pages
 
 cd -
