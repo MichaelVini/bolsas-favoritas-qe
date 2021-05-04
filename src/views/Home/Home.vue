@@ -1,48 +1,48 @@
 <template>
         <section class="home">
-            <div class="my-account">
-                <a href="">
-                    <img src="@/assets/chevron-left-solid.svg" alt="">
+            <div class="home__my-account">
+                <a class=".home__my-account__a" href="">
+                    <img class="home__my-account__image" src="@/assets/chevron-left-solid.svg" alt="">
                     <p>Minha Conta</p>
                 </a>
             </div>
-            <div class="home-elements">
-                <h1>Bolsas favoritas</h1>
-                <p>
+            <div class="home__elements">
+                <h1 class="home__elements__title">Bolsas favoritas</h1>
+                <p class="home__elements__text">
                 Adicione bolsas de cursos e faculdades do seu interesse
                 e receba atualizações com as melhores ofertas disponíveis.
                 </p>
                 <div class="semester-list">
-                    <ul>
-                        <li :class="{selected: allSemesters}"><a  @click.prevent="changeSemester($event.target.id)" id="1">Todos os semestres</a></li>
-                        <li :class="{selected: segundoSem2019}"><a @click.prevent="changeSemester($event.target.id)" id="2">2° semestre de 2019</a></li>
-                        <li :class="{selected: primeiroSem2020}"><a  @click.prevent="changeSemester($event.target.id)" id="3">1° semestre de 2020</a></li>
+                    <ul class="semester-list__items">
+                        <li class="semester-list__item" :class="{selected: allSemesters}"><a  @click.prevent="changeSemester($event.target.id)" id="1" class="semester-list__item__text">Todos os semestres</a></li>
+                        <li class="semester-list__item" :class="{selected: segundoSem2019}"><a @click.prevent="changeSemester($event.target.id)" id="2" class="semester-list__item__text">2° semestre de 2019</a></li>
+                        <li class="semester-list__item" :class="{selected: primeiroSem2020}"><a  @click.prevent="changeSemester($event.target.id)" id="3" class="semester-list__item__text">1° semestre de 2020</a></li>
                     </ul>
                 </div>
                 <div class="scholarships-list">
                     <div @click="changeModal" class="add-courses">
-                        <img src="@/assets/plus-circle.svg" alt="">
+                        <img class="add-courses__image" src="@/assets/plus-circle.svg" alt="">
                         <h2>Adicionar bolsa</h2>
-                        <p>Clique para adicionar bolsas de cursos do seu interesse</p>
+                        <p class="add-courses__text">Clique para adicionar bolsas de cursos do seu interesse</p>
                     </div>
 
                     <div v-for="(scholarship, index) in scholarshipsFilterBySemesters"  :key="index"  class="favorite-scholarships-list">
                         <div class="scholarships-content">
-                            <div class="logo-university">
+                            <div class="scholarship-content__logo">
                                 <img :src="scholarship.university.logo_url" alt="" width="40%">
                             </div>
-                            <div class="star-rating">
-                                <img src="@/assets/star-rating.png" width="40%">
-                                <p><b>{{ scholarship.university.score }}</b></p>
+                            <div class="scholarship-content__star-rating">
+                                <img class="scholarship-content__star-rating__image" src="@/assets/star-rating.png" width="40%">
+                                <p class="scholarships-content__text"><b>{{ scholarship.university.score }}</b></p>
                             </div>
-                            <span><b>{{scholarship.course.kind}} - {{ scholarship.course.shift}}</b></span>
-                            <p>Início das aulas em: {{ scholarship.start_date }}</p>
-                            <p>Mensalidade com o Quero Bolsa:</p>
-                            <p><s>{{ scholarship.full_price }}</s></p>
-                            <h3>R$ {{ scholarship.price_with_discount }}/mês</h3>
-                            <div class="buttons-favorite-scholarships-list">
-                                <button class="btn-delete" @click="deleteScholarship(index)">Excluir</button>
-                                <button class="btn-show-offers">Ver oferta</button>
+                            <span class="scholarships-content__span"><b>{{scholarship.course.kind}} - {{ scholarship.course.shift}}</b></span>
+                            <p class="scholarships-content__text">Início das aulas em: {{ scholarship.start_date }}</p>
+                            <p class="scholarships-content__text">Mensalidade com o Quero Bolsa:</p>
+                            <p class="scholarships-content__text"><s>{{ scholarship.full_price }}</s></p>
+                            <h3 class="scholarships-content__h3" >R$ {{ scholarship.price_with_discount }}/mês</h3>
+                            <div class="favorite-scholarships-list__buttons">
+                                <button class="btn btn--delete" @click="deleteScholarship(index)">Excluir</button>
+                                <button class="btn btn--show-offers">Ver oferta</button>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,6 @@ export default {
         return {
             showModal: false,
             dataScholarships: [],
-            isSelected: true,
             favoriteScholarships: [],
             allSemesters: true,
             segundoSem2019: false,
