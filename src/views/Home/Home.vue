@@ -12,19 +12,14 @@
                 Adicione bolsas de cursos e faculdades do seu interesse
                 e receba atualizações com as melhores ofertas disponíveis.
                 </p>
-                <div class="semester-list">
-                    <ul class="semester-list__items">
-                        <li class="semester-list__item" :class="{selected: allSemesters}"><a  @click.prevent="changeSemester($event.target.id)" id="1" class="semester-list__item__text">Todos os semestres</a></li>
-                        <li class="semester-list__item" :class="{selected: segundoSem2019}"><a @click.prevent="changeSemester($event.target.id)" id="2" class="semester-list__item__text">2° semestre de 2019</a></li>
-                        <li class="semester-list__item" :class="{selected: primeiroSem2020}"><a  @click.prevent="changeSemester($event.target.id)" id="3" class="semester-list__item__text">1° semestre de 2020</a></li>
-                    </ul>
-                </div>
+
+                <Semesters @dataSemesters="dataSemesters($event)"/>
+                
                 <div class="scholarships-list">
-                    <div @click="changeModal" class="add-courses">
-                        <img class="add-courses__image" src="@/assets/plus-circle.svg" alt="">
-                        <h2>Adicionar bolsa</h2>
-                        <p class="add-courses__text">Clique para adicionar bolsas de cursos do seu interesse</p>
-                    </div>
+                    
+                    <AddCourseCard 
+                    :changeModal="changeModal"
+                    />
 
                     <div v-for="(scholarship, index) in scholarshipsFilterBySemesters"  :key="index"  class="favorite-scholarships-list">
                         <div class="scholarships-content">
@@ -59,7 +54,9 @@
 
 <script>
 import ModalScholarships from '@/components/ModalScholarships/ModalScholarships'
+import Semesters from '../../components/Semesters/Semesters.vue'
 import api from '@/services/api'
+import AddCourseCard from '../../components/AddCourseCard/AddCourseCard.vue'
 
 export default {
     data(){
@@ -67,9 +64,7 @@ export default {
             showModal: false,
             dataScholarships: [],
             favoriteScholarships: [],
-            allSemesters: true,
-            segundoSem2019: false,
-            primeiroSem2020: false
+            semestersScholarships: []
         }
     },
     computed:{
@@ -82,9 +77,9 @@ export default {
                return elem.enrollment_semester === "2020.1"  
             })
             
-            if(this.segundoSem2019 == true){
+            if(this.semestersScholarships[1] == true){
                 return filterBySecondSemester2019
-            } else if (this.primeiroSem2020 == true) {
+            } else if (this.semestersScholarships[2] == true) {
                 return filterByFirstSemester2020
             } else {
                 return this.favoriteScholarships
@@ -92,31 +87,20 @@ export default {
         }
     },
     components: {
-        ModalScholarships
+        ModalScholarships,
+        Semesters,
+        AddCourseCard
     },
     methods: {
         changeModal(){
             this.showModal = !this.showModal
         },
-        changeSemester(id){
-            if(id == 1){
-                this.allSemesters = true;
-                this.segundoSem2019 = false;
-                this.primeiroSem2020 = false;
-            } else if (id == 2) {
-                this.segundoSem2019 = true;
-                this.allSemesters = false;
-                this.primeiroSem2020 = false;
-            } else {
-                this.primeiroSem2020 = true;
-                this.allSemesters = false;
-                this.segundoSem2019 = false;
-            }
+        dataSemesters($event){
+            this.semestersScholarships = $event
         },
         dataFavoriteScholarships($event){
             this.favoriteScholarships = $event
         },
-
         deleteScholarship(index){
             this.favoriteScholarships.splice(index, 1);
         },
