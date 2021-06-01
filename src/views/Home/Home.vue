@@ -1,7 +1,7 @@
 <template>
         <section class="home">
             <div class="home__my-account">
-                <a class=".home__my-account__a" href="">
+                <a class="home__my-account__a" href="">
                     <img class="home__my-account__image" src="@/assets/chevron-left-solid.svg" alt="">
                     <p>Minha Conta</p>
                 </a>
