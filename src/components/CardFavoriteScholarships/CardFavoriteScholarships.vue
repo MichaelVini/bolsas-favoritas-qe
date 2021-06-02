@@ -4,14 +4,18 @@
         <div v-for="(scholarship, index) in scholarshipsFilterBySemesters"  :key="index"  class="favorite-scholarships-list">
             <div class="scholarships-content">
                 <div class="scholarship-content__logo">
-                    <img :src="scholarship.university.logo_url" alt="" width="40%">
+                    <img :src="scholarship.university.logo_url" alt="" width="35%">
                 </div>
+                <span class="scholarships-content__span"><b>{{scholarship.university.name}}</b></span>
+                <p class="scholarships-content__name-course">{{scholarship.course.name}}</p>
                 <div class="scholarship-content__star-rating">
                     <img class="scholarship-content__star-rating__image" src="@/assets/star-rating.png" width="40%">
                     <p class="scholarships-content__text"><b>{{ scholarship.university.score }}</b></p>
                 </div>
+                <hr>
                 <span class="scholarships-content__span"><b>{{scholarship.course.kind}} - {{ scholarship.course.shift}}</b></span>
                 <p class="scholarships-content__text">Início das aulas em: {{ scholarship.start_date }}</p>
+                <hr>
                 <p class="scholarships-content__text">Mensalidade com o Quero Bolsa:</p>
                 <p class="scholarships-content__text"><s>{{ scholarship.full_price }}</s></p>
                 <h3 class="scholarships-content__h3" >R$ {{ scholarship.price_with_discount }}/mês</h3>
@@ -59,6 +63,11 @@ export default {
             } else {
                 return this.favoriteScholarships
             }
+        }
+    },
+        watch: {
+        favoriteScholarshipsInLocalStorage(){
+            window.localStorage.favoriteScholarships = this.favoriteScholarships
         }
     }
 }
