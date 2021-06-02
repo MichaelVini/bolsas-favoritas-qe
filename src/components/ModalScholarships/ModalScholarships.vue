@@ -47,7 +47,7 @@
                     </div>
                     <div class="filter">
                         <span>Resultado</span>
-                        <span>Ordenar por</span>
+                        <span>Ordenar pozzr</span>
                     </div>
                     <div v-for="(scholarship, id) in scholarshipsFilters"  :key="id"  class="scholarships-list">
                         <input type="checkbox" :value="`${id}`" v-model="checkedScholarships">
@@ -70,6 +70,7 @@
 
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 
 export default {
     data() {
@@ -80,15 +81,12 @@ export default {
             citySelected: "",
             scholarshipSelected: "",
             modality: [],
-            checkedScholarships: [],
-            favoriteScholarships:[]
+            checkedScholarships: []
         }
     },
-    props: {
-        changeModal: { type: Function },
-        dataScholarships: { type: Array }
-    },
+    
     computed:{
+        ...mapState(["dataScholarships"]),
         scholarshipsFilters(){
             const filterByCourseName = this.dataScholarships.filter((elem) => {
                return elem.course.name === this.scholarshipSelected && elem.price_with_discount <= this.rangeValue 
@@ -114,6 +112,10 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(["UPDATE_FAVORITE_SCHOLARSHIPS", "UPDATE_SHOWMODAL"]),
+         changeModal(){
+            this.UPDATE_SHOWMODAL(false);
+        },
         filterCities(){
             let array = this.dataScholarships;
             
@@ -152,16 +154,9 @@ export default {
                 })
                 return resul;
             })
-            
-            this.favoriteScholarships = favoriteScholarshipsArray
-            this.sendEventFavoriteScholarships();
+            this.UPDATE_FAVORITE_SCHOLARSHIPS(favoriteScholarshipsArray);
             this.changeModal();
-        },
-        sendEventFavoriteScholarships(){
-            let parsedObj = JSON.parse(JSON.stringify(this.favoriteScholarships))
-            this.$emit("dataFavoriteScholarships", parsedObj)
         }
-
     },
     created() {
         this.filterCities();

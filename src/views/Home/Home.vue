@@ -12,67 +12,29 @@
                 Adicione bolsas de cursos e faculdades do seu interesse
                 e receba atualizações com as melhores ofertas disponíveis.
                 </p>
-
-                <Semesters 
-                    @dataSemesters="dataSemesters($event)"
-                />
-
-                <CardFavoriteScholarships 
-                    :dataScholarships ="dataScholarships" 
-                    :favoriteScholarships="favoriteScholarships" 
-                    :semestersScholarships="semestersScholarships"
-                    @dataShowModal="dataShowModal($event)"
-                />
-
-                <ModalScholarships 
-                    v-if="showModal"
-                    :changeModal="changeModal"
-                    :dataScholarships ="dataScholarships"
-                    @dataFavoriteScholarships="dataFavoriteScholarships($event)"
-                />
+                <Semesters />
+                <CardFavoriteScholarships />
+                <ModalScholarships v-if="showModal" />
             </div>
         </section>
 </template>
 
 <script>
 import ModalScholarships from '@/components/ModalScholarships/ModalScholarships'
-import Semesters from '../../components/Semesters/Semesters.vue'
-import api from '@/services/api'
-import CardFavoriteScholarships from '../../components/CardFavoriteScholarships/CardFavoriteScholarships.vue'
+import Semesters from '@/components/Semesters/Semesters.vue'
+import CardFavoriteScholarships from '@/components/CardFavoriteScholarships/CardFavoriteScholarships.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-    data(){
-        return {
-            showModal: false,
-            dataScholarships: [],
-            favoriteScholarships: [],
-            semestersScholarships: []
-        }
+    computed: { 
+        ...mapState(["showModal"])
     },
     components: {
         ModalScholarships,
         Semesters,
         CardFavoriteScholarships
     },
-    methods: {
-        changeModal(){
-            this.showModal = !this.showModal
-        },
-        dataSemesters($event){
-            this.semestersScholarships = $event
-        },
-        dataFavoriteScholarships($event){
-            this.favoriteScholarships = $event
-        },
-        dataShowModal($event){
-            this.showModal = $event
-        },
-        async getData() {
-            await api.get('/db.json').then( response => {
-                this.dataScholarships = response.data
-            })
-        }
-    },
+    methods: mapActions(["getData"]),
     created(){
         this.getData();
     }

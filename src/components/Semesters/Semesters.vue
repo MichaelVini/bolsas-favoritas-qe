@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
 export default {
     data(){
         return {
@@ -17,7 +18,11 @@ export default {
             primeiroSem2020: false
         }
     },
+    computed: {
+        ...mapState(["semesterScholarships"])
+    },
     methods: {
+        ...mapMutations(["UPDATE_SEMESTERS_SCHOLARSHIPS"]),
          changeSemester(id){
             if(id == 1){
                 this.allSemesters = true;
@@ -32,10 +37,10 @@ export default {
                 this.allSemesters = false;
                 this.segundoSem2019 = false;
             }
-            this.sendEventSemesters();            
+            this.sendSemesters();            
         }, 
-        sendEventSemesters(){
-            this.$emit("dataSemesters", [this.allSemesters, this.segundoSem2019, this.primeiroSem2020])
+        sendSemesters(){
+            this.UPDATE_SEMESTERS_SCHOLARSHIPS([this.allSemesters, this.segundoSem2019, this.primeiroSem2020])
         }
     },
 }

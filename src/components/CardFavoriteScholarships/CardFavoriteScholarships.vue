@@ -1,8 +1,6 @@
 <template>
     <section class="card-favorite-scholarships">
-        <AddCourseCard 
-            :changeModal="changeModal"
-        />
+        <AddCourseCard />
         <div v-for="(scholarship, index) in scholarshipsFilterBySemesters"  :key="index"  class="favorite-scholarships-list">
             <div class="scholarships-content">
                 <div class="scholarship-content__logo">
@@ -26,32 +24,25 @@
     </section>
 </template>
 <script>
+import { mapMutations, mapState } from 'vuex';
 import AddCourseCard from '../AddCourseCard/AddCourseCard.vue';
 export default {
-  components: { AddCourseCard },
-    props: {
-        dataScholarships: {type: Array },
-        favoriteScholarships: {type: Array},
-        semestersScholarships: {type: Array}
-    },
-    data(){
-        return {
-            showModal: false
-        }
+    components: { 
+        AddCourseCard
     },
     methods: {
-         deleteScholarship(index){
+        ...mapMutations(["UPDATE_SHOWMODAL"]),
+        deleteScholarship(index){
             this.favoriteScholarships.splice(index, 1);
         },
         changeModal(){
-            this.showModal = !this.showModal
-            this.sendEventShowModal();
-        },
-        sendEventShowModal(){
-            this.$emit("dataShowModal", this.showModal)
+            this.UPDATE_SHOWMODAL(true);
         }
     },
     computed: {
+        ...mapState(
+            ["semestersScholarships","favoriteScholarships"]),
+
         scholarshipsFilterBySemesters(){
             const filterBySecondSemester2019 = this.favoriteScholarships.filter((elem) => {
                return elem.enrollment_semester === "2019.2"  

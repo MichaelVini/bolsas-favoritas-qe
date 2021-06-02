@@ -6,9 +6,13 @@
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 export default {
-    props: {
-        changeModal: { type: Function },
+    methods: {
+        ...mapMutations(["UPDATE_SHOWMODAL"]),
+        changeModal(){
+            this.UPDATE_SHOWMODAL(true);
+        }
     }
 }
 </script>
