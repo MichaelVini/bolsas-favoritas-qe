@@ -13,7 +13,7 @@
                 e receba atualizações com as melhores ofertas disponíveis.
                 </p>
                 <Semesters />
-                <CardFavoriteScholarships />
+                <ListFavoriteScholarships />
                 <ModalScholarships v-if="showModal" />
             </div>
         </section>
@@ -22,7 +22,7 @@
 <script>
 import ModalScholarships from '@/components/ModalScholarships/ModalScholarships'
 import Semesters from '@/components/Semesters/Semesters.vue'
-import CardFavoriteScholarships from '@/components/CardFavoriteScholarships/CardFavoriteScholarships.vue'
+import ListFavoriteScholarships from '@/components/ListFavoriteScholarships/ListFavoriteScholarships.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -32,7 +32,7 @@ export default {
     components: {
         ModalScholarships,
         Semesters,
-        CardFavoriteScholarships
+        ListFavoriteScholarships
     },
     methods: mapActions(["getData"]),
     created(){

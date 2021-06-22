@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalScholarships should render default state 1`] = `
+"<section class=\\"modal\\"><button class=\\"btn-close-modal\\">X</button>
+  <div class=\\"modal-container\\">
+    <div class=\\"modal-dados\\">
+      <h2>Adicionar bolsa</h2>
+      <p>Filtre e adicione as bolsas de seu interesse.</p>
+      <div class=\\"select-city\\"><span>SELECIONE SUA CIDADE</span> <select name=\\"city\\" id=\\"city\\">
+          <option value=\\"\\" selected=\\"selected\\">Selecione uma cidade</option>
+          <option>São José dos Campos</option>
+        </select></div>
+      <div class=\\"select-scholarship\\"><span>SELECIONE O CURSO DE SUA PREFERÊNCIA</span> <select name=\\"cc\\" id=\\"cc\\">
+          <option value=\\"\\" selected=\\"selected\\">Selecione um curso</option>
+          <option>TESTE</option>
+        </select></div>
+      <div class=\\"select-modality\\"><span>COMO VOCÊ QUER ESTUDAR?</span>
+        <div class=\\"modality\\">
+          <div class=\\"presencial-modality\\"><input type=\\"checkbox\\" value=\\"Presencial\\" class=\\"presencial\\"> <label for=\\"presencial\\">Presencial</label></div>
+          <div class=\\"ead-modality\\"><input type=\\"checkbox\\" value=\\"EaD\\"> <label for=\\"ead\\">A distância</label></div>
+        </div>
+      </div>
+      <div class=\\"select-max-payment\\"><span>ATÉ QUANTO PODE PAGAR?</span>
+        <div class=\\"slideContainer\\">
+          <p>R$ 5000</p> <input type=\\"range\\" min=\\"1\\" max=\\"10000\\" value=\\"5000\\" id=\\"myRange\\" class=\\"slider\\">
+        </div>
+      </div>
+      <div class=\\"filter\\"><span>Resultado</span> <span>Ordenar pozzr</span></div>
+      <div class=\\"add-favorite-courses\\"><button class=\\"btn-cancel\\">Cancelar</button> <button class=\\"btn-add-courses\\">Adicionar bolsa(s)</button></div>
+    </div>
+  </div>
+</section>"
+`;

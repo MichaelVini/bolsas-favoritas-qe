@@ -64,13 +64,8 @@ export default {
                 return this.favoriteScholarships
             }
         }
-    },
-        watch: {
-        favoriteScholarshipsInLocalStorage(){
-            window.localStorage.favoriteScholarships = this.favoriteScholarships
-        }
     }
 }
 </script>
 
-<style src="./cardFavoriteScholarships.css" scoped>
+<style src="./listFavoriteScholarships.css" scoped>

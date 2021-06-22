@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Semesters.vue should render default state 1`] = `
+"<div class=\\"semester-list\\">
+  <ul class=\\"semester-list__items\\">
+    <li class=\\"semester-list__item selected\\"><a id=\\"1\\" class=\\"semester-list__item__text\\">Todos os semestres</a></li>
+    <li class=\\"semester-list__item\\"><a id=\\"2\\" class=\\"semester-list__item__text\\">2° semestre de 2019</a></li>
+    <li class=\\"semester-list__item\\"><a id=\\"3\\" class=\\"semester-list__item__text\\">1° semestre de 2020</a></li>
+  </ul>
+</div>"
+`;

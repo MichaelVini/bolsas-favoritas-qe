@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCouseCard.vue should render default state 1`] = `
+"<div class=\\"add-courses\\"><img src=\\"@/assets/plus-circle.svg\\" alt=\\"\\" class=\\"add-courses__image\\">
+  <h2>Adicionar bolsa</h2>
+  <p class=\\"add-courses__text\\">Clique para adicionar bolsas de cursos do seu interesse</p>
+</div>"
+`;
