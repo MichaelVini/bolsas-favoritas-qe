@@ -7,6 +7,9 @@ export default {
     },
     UPDATE_FAVORITE_SCHOLARSHIPS(state, payload){
         state.favoriteScholarships = payload
+        
+        const favoriteScholarshipsLocalStorage = JSON.stringify(payload)
+        localStorage.setItem('favoriteScholarships', favoriteScholarshipsLocalStorage)
     },
     UPDATE_DATA_SCHOLARSHIPS(state, payload){
         state.dataScholarships = payload

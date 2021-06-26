@@ -23,20 +23,30 @@
 import ModalScholarships from '@/components/ModalScholarships/ModalScholarships'
 import Semesters from '@/components/Semesters/Semesters.vue'
 import ListFavoriteScholarships from '@/components/ListFavoriteScholarships/ListFavoriteScholarships.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 
 export default {
     computed: { 
-        ...mapState(["showModal"])
+        ...mapState(["showModal", "favoriteScholarships"])
     },
     components: {
         ModalScholarships,
         Semesters,
         ListFavoriteScholarships
     },
-    methods: mapActions(["getData"]),
+    methods: {
+        ...mapActions(["getData"]),
+        ...mapMutations(["UPDATE_FAVORITE_SCHOLARSHIPS"])
+    },   
     created(){
         this.getData();
+    },
+    mounted(){
+        const favoriteScholarshipsLocalStorage = JSON.parse(localStorage.getItem('favoriteScholarships'))
+
+        if(favoriteScholarshipsLocalStorage){
+            this.UPDATE_FAVORITE_SCHOLARSHIPS(favoriteScholarshipsLocalStorage)
+        }
     }
 }
 </script>

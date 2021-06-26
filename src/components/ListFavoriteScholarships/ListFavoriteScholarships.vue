@@ -35,9 +35,13 @@ export default {
         AddCourseCard
     },
     methods: {
-        ...mapMutations(["UPDATE_SHOWMODAL"]),
+        ...mapMutations(["UPDATE_SHOWMODAL","UPDATE_FAVORITE_SCHOLARSHIPS"]),
+        
         deleteScholarship(index){
-            this.favoriteScholarships.splice(index, 1);
+            let arrayFavoriteScholarships = this.favoriteScholarships
+
+            arrayFavoriteScholarships.splice(index, 1)
+            this.UPDATE_FAVORITE_SCHOLARSHIPS(arrayFavoriteScholarships)
         },
         changeModal(){
             this.UPDATE_SHOWMODAL(true);
